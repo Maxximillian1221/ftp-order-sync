@@ -1,6 +1,6 @@
-# Deploying to Vercel with Vercel Postgres
+# Deploying to Vercel with Neon PostgreSQL
 
-This guide provides step-by-step instructions for deploying your Shopify FTP Order Sync app to Vercel with Vercel Postgres.
+This guide provides step-by-step instructions for deploying your Shopify FTP Order Sync app to Vercel with Neon PostgreSQL from the Vercel marketplace.
 
 ## Prerequisites
 
@@ -22,16 +22,14 @@ This guide provides step-by-step instructions for deploying your Shopify FTP Ord
    - Build and Output Settings: Leave as default (they're configured in vercel.json)
    - Root Directory: Leave as default (/)
 
-## Step 3: Set Up Vercel Postgres
+## Step 3: Set Up Neon PostgreSQL
 
-1. In your project settings, go to the "Storage" tab
-2. Click "Connect Database" > "Create New" > "Postgres"
-3. Choose your region and plan
-4. Click "Create & Continue"
-5. Vercel will automatically add the required environment variables to your project:
-   - `POSTGRES_PRISMA_URL`
-   - `POSTGRES_URL`
-   - `POSTGRES_URL_NON_POOLING`
+1. In your project settings, go to the "Integrations" tab
+2. Search for "Neon" in the marketplace
+3. Click on "Neon" and then "Add Integration"
+4. Follow the prompts to create a new Neon project or connect to an existing one
+5. Once connected, Neon will provide a `DATABASE_URL` environment variable
+6. Vercel will automatically add this environment variable to your project
 
 ## Step 4: Add Shopify Environment Variables
 
@@ -103,5 +101,6 @@ When you push changes to your GitHub repository, Vercel will automatically redep
 ## Additional Resources
 
 - [Vercel Documentation](https://vercel.com/docs)
-- [Prisma with Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres/using-with-prisma)
+- [Neon Documentation](https://neon.tech/docs/introduction)
+- [Prisma with Neon](https://neon.tech/docs/guides/prisma)
 - [Shopify App Deployment](https://shopify.dev/docs/apps/deployment/web)
