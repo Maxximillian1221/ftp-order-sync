@@ -4,6 +4,35 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 import * as os from 'os';
 
+export async function testFtpConnection(settings) {
+  const client = new ftp.Client();
+  client.ftp.verbose = true;
+  
+  try {
+    console.log("Testing connection to FTP server...");
+    await client.access({
+      host: settings.host,
+      port: settings.port,
+      user: settings.username,
+      password: settings.password,
+    });
+    console.log("Connected to FTP server successfully");
+    
+    // Try to navigate to the 'in' directory to verify it exists
+    console.log("Attempting to enter 'in' directory...");
+    await client.cd('in');
+    console.log("Successfully entered 'in' directory");
+    
+    return true;
+  } catch (err) {
+    console.error("FTP Connection Test Error:", err.message);
+    throw new Error(`FTP connection failed: ${err.message}`);
+  } finally {
+    console.log("Closing FTP connection");
+    client.close();
+  }
+}
+
 function formatDate(dateString) {
   try {
     const date = new Date(dateString);
