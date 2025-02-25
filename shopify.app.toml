@@ -1,0 +1,36 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "072fa94ffa5e54bb0bce7b1e41e418ca"
+application_url = "https://patent-antigua-frequency-suppliers.trycloudflare.com"
+embedded = true
+name = "FTP Order Sync"
+handle = "ftp-order-sync-2"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_orders,read_orders,write_products,read_products,read_customers,read_shipping,write_shipping,write_assigned_fulfillment_orders,write_merchant_managed_fulfillment_orders,write_third_party_fulfillment_orders"
+
+[build]
+automatically_update_urls_on_dev = true
+include_config_on_deploy = true
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/scopes_update" ]
+  uri = "/webhooks/app/scopes_update"
+
+  [[webhooks.subscriptions]]
+  topics = [ "app/uninstalled" ]
+  uri = "/webhooks/app/uninstalled"
+
+[auth]
+redirect_urls = [
+  "https://patent-antigua-frequency-suppliers.trycloudflare.com/auth/callback",
+  "https://patent-antigua-frequency-suppliers.trycloudflare.com/auth/shopify/callback",
+  "https://patent-antigua-frequency-suppliers.trycloudflare.com/api/auth/callback"
+]
+
+[pos]
+embedded = false
