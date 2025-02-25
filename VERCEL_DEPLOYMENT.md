@@ -56,7 +56,31 @@ Add the following environment variables in the Vercel project settings:
 4. Vercel will rebuild and deploy your application with the database connection
 5. Once deployed, you'll get a URL for your application (e.g., https://your-app-name.vercel.app)
 
-## Step 7: Update Shopify App Configuration
+## Step 7: Set Up Database Schema
+
+Since we've modified the build script to skip migrations (to avoid migration conflicts), you'll need to set up the database schema manually:
+
+1. Access your Neon PostgreSQL database using the Neon console or a PostgreSQL client
+2. Create the required tables using the schema defined in your Prisma schema
+3. Alternatively, you can run a one-time migration using the Vercel CLI:
+   ```bash
+   # Install Vercel CLI if you haven't already
+   npm install -g vercel
+   
+   # Login to Vercel
+   vercel login
+   
+   # Link to your project
+   vercel link
+   
+   # Pull environment variables
+   vercel env pull .env
+   
+   # Run Prisma migration
+   npx prisma migrate deploy
+   ```
+
+## Step 8: Update Shopify App Configuration
 
 1. Go to your [Shopify Partner Dashboard](https://partners.shopify.com/organizations)
 2. Navigate to your app
@@ -67,7 +91,7 @@ Add the following environment variables in the Vercel project settings:
    - `https://your-app-name.vercel.app/api/auth/callback`
 5. Save your changes
 
-## Step 8: Test Your Deployment
+## Step 9: Test Your Deployment
 
 1. Install your app on a development store
 2. Verify that the app loads correctly
