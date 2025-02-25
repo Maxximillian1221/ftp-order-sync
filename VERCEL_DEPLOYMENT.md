@@ -22,16 +22,23 @@ This guide provides step-by-step instructions for deploying your Shopify FTP Ord
    - Build and Output Settings: Leave as default (they're configured in vercel.json)
    - Root Directory: Leave as default (/)
 
-## Step 3: Set Up Neon PostgreSQL
+## Step 3: Deploy Your Project First
 
-1. In your project settings, go to the "Integrations" tab
-2. Search for "Neon" in the marketplace
-3. Click on "Neon" and then "Add Integration"
-4. Follow the prompts to create a new Neon project or connect to an existing one
-5. Once connected, Neon will provide a `DATABASE_URL` environment variable
-6. Vercel will automatically add this environment variable to your project
+1. Click "Deploy" to create your Vercel project
+2. Wait for the initial deployment to complete (it may fail due to missing database configuration, which is expected)
+3. This creates your project in Vercel, which is needed before adding integrations
 
-## Step 4: Add Shopify Environment Variables
+## Step 4: Set Up Neon PostgreSQL
+
+1. After the initial deployment, go to your project dashboard
+2. Navigate to the "Integrations" tab
+3. Search for "Neon" in the marketplace
+4. Click on "Neon" and then "Add Integration"
+5. Follow the prompts to create a new Neon project or connect to an existing one
+6. Once connected, Neon will provide a `DATABASE_URL` environment variable
+7. Vercel will automatically add this environment variable to your project
+
+## Step 5: Add Shopify Environment Variables
 
 Add the following environment variables in the Vercel project settings:
 
@@ -41,13 +48,15 @@ Add the following environment variables in the Vercel project settings:
 4. `SCOPES`: Your Shopify app scopes (e.g., write_orders,read_orders,write_products,read_products)
 5. `NODE_ENV`: Set to `production`
 
-## Step 5: Deploy Your App
+## Step 6: Redeploy Your App
 
-1. Click "Deploy" to start the deployment process
-2. Vercel will build and deploy your application
-3. Once deployed, you'll get a URL for your application (e.g., https://your-app-name.vercel.app)
+1. Go to the "Deployments" tab in your project dashboard
+2. Find your latest deployment and click "Redeploy"
+3. Select "Redeploy with existing Build Cache" option
+4. Vercel will rebuild and deploy your application with the database connection
+5. Once deployed, you'll get a URL for your application (e.g., https://your-app-name.vercel.app)
 
-## Step 6: Update Shopify App Configuration
+## Step 7: Update Shopify App Configuration
 
 1. Go to your [Shopify Partner Dashboard](https://partners.shopify.com/organizations)
 2. Navigate to your app
@@ -58,7 +67,7 @@ Add the following environment variables in the Vercel project settings:
    - `https://your-app-name.vercel.app/api/auth/callback`
 5. Save your changes
 
-## Step 7: Test Your Deployment
+## Step 8: Test Your Deployment
 
 1. Install your app on a development store
 2. Verify that the app loads correctly
