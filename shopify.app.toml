@@ -4,7 +4,7 @@ client_id = "072fa94ffa5e54bb0bce7b1e41e418ca"
 application_url = "https://ftp-order-sync-1eus9sw3i-iulians-projects-3e3f2a9b.vercel.app"
 embedded = true
 name = "FTP Order Sync"
-handle = "ftp-order-sync-2"
+handle = "ftp-order-sync-ovalle"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
